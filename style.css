@@ -16,9 +16,30 @@ body {
 .wrapper {
     display: flex;
     flex-direction: column;
+    border:red 1px solid;
+    flex-grow: 1;
 }
 
 .header {
     display: flex;
     justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.sketch {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+
+.footer {
+    display: flex;
+    border: red 1px solid;
+
 }
