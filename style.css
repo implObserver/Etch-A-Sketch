@@ -49,14 +49,26 @@ body {
     flex-grow: 1;
 }
 
+.border {
+    background-color: #3957F5;
+    display: flex;
+    width: 668px;
+    height: 668px;
+    justify-content: center;
+    align-items: center;
+}
+
 .sketch {
-    width: 85%;
-    height: 95%;
-    min-height: 400px;
-    min-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 656px;
+    height: 656px;
     background-color: white;
-    border-radius: 20px;
-    border: #3957F5 6px solid;
+}
+
+.grid-element {
+    display: flex;
+    border: black 0.5px solid;
 }
 
 .footer {
