@@ -55,15 +55,11 @@ body {
     display: inline-grid;
     grid-template-columns: repeat(35, 2fr);
     grid-template-rows: repeat(35, 2fr);
-    border: 5px solid white;
+    border: 5px solid #3957F5;
     border-radius: 5px;
     height: 650px;
     width: 650px;
     background-color: white;
-}
-
-.grid__item {
-    
 }
 
 .footer {
