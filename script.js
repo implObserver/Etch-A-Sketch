@@ -95,10 +95,12 @@ function setBackgroundColor() {
 }
 
 function setEraser() {
+    isRainbow = false;
     isEraser = !isEraser;
     colorEaselGridItem = isEraser ? '#11ffee00' : palettePenColour.value;
 }
 
 function setRainbow() {
+    isEraser = false;
     isRainbow = !isRainbow;
 }
