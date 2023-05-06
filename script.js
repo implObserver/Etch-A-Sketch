@@ -1,13 +1,16 @@
 const buttonClear = document.querySelector('.settings__clear');
 const buttonPenColour = document.querySelector('.settings__pen-colour__color');
+const buttonOffGrid = document.querySelector('.settings__grid');
 const easelGrid = document.querySelector('.easel__grid');
 const slider = document.querySelector('.settings__grid-size__slider');
-let colorEaselGrid = 'black';
 
+let isGrid = false;
+let colorEaselGrid = 'black';
 createGrid();
 slider.addEventListener('input', createGrid);
 buttonClear.addEventListener('click', createGrid);
 buttonPenColour.addEventListener('input', changeColour);
+buttonOffGrid.addEventListener('click', changeGrid);
 
 function createGrid() {
     let val = slider.value;
@@ -41,7 +44,8 @@ function addConfiguredEaselGridItem() {
 }
 
 function setConfigEaselGridItem(easelGridItem) {
-    easelGridItem.classList.add('cell');
+    easelGridItem.classList.add('grid__item');
+    easelGridItem.style.border = isGrid ? 'black 1px solid' : '';
     easelGridItem.addEventListener('mouseover', (e) => {
         e.target.style.backgroundColor = colorEaselGrid;
     })
@@ -50,4 +54,17 @@ function setConfigEaselGridItem(easelGridItem) {
 function changeColour() {
     colorEaselGrid = buttonPenColour.value;
     console.log(buttonPenColour.value);
+}
+
+function changeGrid() {
+    isGrid = !isGrid;
+    value = isGrid ? '1px black solid' : '';
+    changeBorderGrid(value);
+}
+
+function changeBorderGrid(value) {
+    let allGridItems = document.querySelectorAll('.grid__item');
+    for (item of allGridItems) {
+        item.style.border = value;
+    }
 }
