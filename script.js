@@ -1,9 +1,11 @@
+const buttonClear = document.querySelector('.settings__clear');
 const easelGrid = document.querySelector('.easel__grid');
 const slider = document.querySelector('.settings__grid-size__slider');
 let colorEaselGrid = 'black';
 
 createGrid();
 slider.addEventListener('input', createGrid);
+buttonClear.addEventListener('click', createGrid);
 
 function createGrid() {
     let val = slider.value;
