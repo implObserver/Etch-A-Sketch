@@ -2,10 +2,12 @@ const buttonClear = document.querySelector('.settings__clear');
 const buttonPenColour = document.querySelector('.settings__pen-colour__color');
 const buttonOffGrid = document.querySelector('.settings__grid');
 const buttonBackgroundColor = document.querySelector('.settings__background-colour__color');
+const buttonEraser = document.querySelector('.settings__eraser');
 const easelGrid = document.querySelector('.easel__grid');
 const slider = document.querySelector('.settings__grid-size__slider');
 
 let isGrid = false;
+let isEraser = false;
 let colorEaselGrid = 'black';
 createGrid();
 slider.addEventListener('input', createGrid);
@@ -13,6 +15,7 @@ buttonClear.addEventListener('click', createGrid);
 buttonPenColour.addEventListener('input', changeColour);
 buttonOffGrid.addEventListener('click', changeGrid);
 buttonBackgroundColor.addEventListener('input', setBackgroundColor);
+buttonEraser.addEventListener('click', setEraser);
 
 function createGrid() {
     let val = slider.value;
@@ -73,4 +76,9 @@ function changeBorderGrid(value) {
 
 function setBackgroundColor() {
     easelGrid.style.backgroundColor = buttonBackgroundColor.value;
+}
+
+function setEraser() {
+    isEraser = !isEraser;
+    colorEaselGrid = isEraser ? '#11ffee00' : buttonPenColour.value;
 }
