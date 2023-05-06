@@ -1,3 +1,5 @@
+const sketch = document.querySelector('.sketch');
+
 function getGridElement(width, height) {
     const gridElement = document.createElement('div');
     gridElement.classList.add('grid-element');
@@ -6,8 +8,12 @@ function getGridElement(width, height) {
     return gridElement;
 }
 
-const sketch = document.querySelector('.sketch');
-let count = (sketch.offsetWidth * sketch.offsetHeight) / 256;
+function getAmountGridItems() {
+    let count = (sketch.offsetWidth * sketch.offsetHeight) / 256;
+    return count;
+}
+
+let count = getAmountGridItems();
 console.log(count);
 for (let i = 0; i < count; i++) {
     sketch.appendChild(getGridElement(16, 16));
