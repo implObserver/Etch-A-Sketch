@@ -1,4 +1,5 @@
 const buttonClear = document.querySelector('.settings__clear');
+const buttonPenColour = document.querySelector('.settings__pen-colour__color');
 const easelGrid = document.querySelector('.easel__grid');
 const slider = document.querySelector('.settings__grid-size__slider');
 let colorEaselGrid = 'black';
@@ -6,6 +7,7 @@ let colorEaselGrid = 'black';
 createGrid();
 slider.addEventListener('input', createGrid);
 buttonClear.addEventListener('click', createGrid);
+buttonPenColour.addEventListener('input', changeColour);
 
 function createGrid() {
     let val = slider.value;
@@ -43,4 +45,9 @@ function setConfigEaselGridItem(easelGridItem) {
     easelGridItem.addEventListener('mouseover', (e) => {
         e.target.style.backgroundColor = colorEaselGrid;
     })
+}
+
+function changeColour() {
+    colorEaselGrid = buttonPenColour.value;
+    console.log(buttonPenColour.value);
 }

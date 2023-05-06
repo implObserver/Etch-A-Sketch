@@ -28,14 +28,21 @@
                 <li><button class="settings__rainbow">TOGGLE RAINBOW</button></li>
                 <li><button class="settings__shading">TOGGLE SHADING</button></li>
                 <li><button class="settings__grabber">COLOUR GRABBER</button></li>
-                <li><button class="settings__pen-colour">PEN COLOUR</button></li>
+                <li>
+                    <button class="settings__pen-colour">
+                        PEN COLOUR
+                        <input class="settings__pen-colour__color" type="color">
+                    </button>
+                </li>
                 <li><button class="settings__clear">CLEAR</button></li>
-                <li><button class="settings__grid-size">
+                <li>
+                    <button class="settings__grid-size">
                         GRID SIZE
                         <input type="range" min="1" max="60" value="30" class="settings__grid-size__slider"
                             oninput="this.nextElementSibling.value = this.value">
                         <output></output>
-                    </button></li>
+                    </button>
+                </li>
                 <li><button class="settings__lighten">TOGGLE LIGHTEN</button></li>
                 <li><button class="settings__grid">TOGGLE GRID LINES</button></li>
                 <li><button class="settings__background-colour">BACKGROUND COLOR</button></li>
