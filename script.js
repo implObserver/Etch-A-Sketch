@@ -12,6 +12,7 @@ let isGrid = false;
 let isEraser = false;
 let isRainbow = false;
 let colorEaselGridItem = 'black';
+
 createGrid();
 slider.addEventListener('input', createGrid);
 buttonClear.addEventListener('click', createGrid);
