@@ -1,21 +1,26 @@
+const palettePenColour = document.querySelector('.settings__pen-colour__color');
+const buttonPenColour = document.querySelector('.settings__pen-colour')
 const buttonClear = document.querySelector('.settings__clear');
-const buttonPenColour = document.querySelector('.settings__pen-colour__color');
 const buttonOffGrid = document.querySelector('.settings__grid');
 const buttonBackgroundColor = document.querySelector('.settings__background-colour__color');
 const buttonEraser = document.querySelector('.settings__eraser');
+const buttonRainbow = document.querySelector('.settings__rainbow');
 const easelGrid = document.querySelector('.easel__grid');
 const slider = document.querySelector('.settings__grid-size__slider');
 
 let isGrid = false;
 let isEraser = false;
-let colorEaselGrid = 'black';
+let isRainbow = false;
+let colorEaselGridItem = 'black';
 createGrid();
 slider.addEventListener('input', createGrid);
 buttonClear.addEventListener('click', createGrid);
-buttonPenColour.addEventListener('input', changeColour);
+palettePenColour.addEventListener('input', changeColour);
+buttonPenColour.addEventListener('click', changeColour);
 buttonOffGrid.addEventListener('click', changeGrid);
 buttonBackgroundColor.addEventListener('input', setBackgroundColor);
 buttonEraser.addEventListener('click', setEraser);
+buttonRainbow.addEventListener('click', setRainbow);
 
 function createGrid() {
     let val = slider.value;
@@ -52,13 +57,23 @@ function setConfigEaselGridItem(easelGridItem) {
     easelGridItem.classList.add('grid__item');
     easelGridItem.style.border = isGrid ? 'black 1px solid' : '';
     easelGridItem.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = colorEaselGrid;
+        e.target.style.backgroundColor = isRainbow ? getRandomColor() : colorEaselGridItem;
     })
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 function changeColour() {
-    colorEaselGrid = buttonPenColour.value;
-    console.log(buttonPenColour.value);
+    isEraser = false;
+    isRainbow = false;
+    colorEaselGridItem = palettePenColour.value;
 }
 
 function changeGrid() {
@@ -80,5 +95,9 @@ function setBackgroundColor() {
 
 function setEraser() {
     isEraser = !isEraser;
-    colorEaselGrid = isEraser ? '#11ffee00' : buttonPenColour.value;
+    colorEaselGridItem = isEraser ? '#11ffee00' : palettePenColour.value;
+}
+
+function setRainbow() {
+    isRainbow = !isRainbow;
 }
