@@ -17,7 +17,7 @@
         </div>
         <div class="main">
             <div class="border">
-                <div class="sketch">
+                <div class="easel__grid">
 
                 </div>
             </div>
@@ -32,10 +32,9 @@
                 <li><button class="settings__clear">CLEAR</button></li>
                 <li><button class="settings__grid-size">
                         GRID SIZE
-                        <div class="settings__grid-size__slidecontainer">
-                            <input type="range" min="1" max="60" value="50"
-                                class="settings__grid-size__slidecontainer__slider">
-                        </div>
+                        <input type="range" min="1" max="60" value="30" class="settings__grid-size__slider"
+                            oninput="this.nextElementSibling.value = this.value">
+                        <output></output>
                     </button></li>
                 <li><button class="settings__lighten">TOGGLE LIGHTEN</button></li>
                 <li><button class="settings__grid">TOGGLE GRID LINES</button></li>

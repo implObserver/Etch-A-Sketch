@@ -1,19 +1,44 @@
-const easel = document.querySelector('.sketch');
-function getGridItem(width, height) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-element');
-    gridItem.style.width = `${width}px`;
-    gridItem.style.height = `${height}px`;
-    return gridItem;
+const easelGrid = document.querySelector('.easel__grid');
+const slider = document.querySelector('.settings__grid-size__slider');
+let colorEaselGrid = 'black';
+
+createGrid();
+slider.addEventListener('input', createGrid);
+
+function createGrid() {
+    let val = slider.value;
+    removeElement(easelGrid);
+    setSizeEaselGrid(val);
+    fillEaselGrid(val);
 }
 
-function getAmountGridItems() {
-    let count = (easel.offsetWidth * easel.offsetHeight) / 256;
-    return count;
+function removeElement(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }
 
-let count = getAmountGridItems();
-console.log(count);
-for (let i = 0; i < count; i++) {
-    easel.appendChild(getGridItem(16, 16));
+function setSizeEaselGrid(val) {
+    easelGrid.setAttribute('style',
+        `grid-template-columns: repeat(${val}, 2fr); 
+         grid-template-rows: repeat(${val}, 2fr);`);
+}
+
+function fillEaselGrid(val) {
+    for (let i = 0; i < Math.pow(val, 2); i++) {
+        easelGrid.appendChild(addConfiguredEaselGridItem());
+    }
+}
+
+function addConfiguredEaselGridItem() {
+    const easelGridItem = document.createElement('div');
+    setConfigEaselGridItem(easelGridItem);
+    return easelGridItem;
+}
+
+function setConfigEaselGridItem(easelGridItem) {
+    easelGridItem.classList.add('cell');
+    easelGridItem.addEventListener('mouseover', (e) => {
+        e.target.style.backgroundColor = colorEaselGrid;
+    })
 }
