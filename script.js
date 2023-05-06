@@ -58,7 +58,9 @@ function setConfigEaselGridItem(easelGridItem) {
     easelGridItem.classList.add('grid__item');
     easelGridItem.style.border = isGrid ? 'black 1px solid' : '';
     easelGridItem.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = isRainbow ? getRandomColor() : colorEaselGridItem;
+        e.target.style.backgroundColor = isRainbow
+            ? getRandomColor()
+            : isEraser ? '#11ffee00' : colorEaselGridItem;
     })
 }
 
@@ -97,7 +99,6 @@ function setBackgroundColor() {
 function setEraser() {
     isRainbow = false;
     isEraser = !isEraser;
-    colorEaselGridItem = isEraser ? '#11ffee00' : palettePenColour.value;
 }
 
 function setRainbow() {
